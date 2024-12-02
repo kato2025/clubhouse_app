@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login</title>
+    <style>
+        .alert {
+            margin: 1rem 0;
+            padding: 0.75rem 1.25rem;
+            border: 1px solid transparent;
+            border-radius: 0.25rem;
+        }
+        .alert-danger {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            text-align: center;
+        }
+        .alert-success {
+            color: #155724;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+        }
+    </style>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body class="login">
+    <h1 class="loginHeading">Login</h1>
+
+    <!-- Error and Success Messages -->
+    <% if (messages.error && messages.error.length > 0) { %>
+        <% messages.error.forEach(err => { %>
+            <div class="alert alert-danger" role="alert">
+                <%= err %>
+            </div>
+        <% }); %>
+    <% } %>
+    <% if (messages.success && messages.success.length > 0) { %>
+        <% messages.success.forEach(msg => { %>
+            <div class="alert alert-success" role="alert">
+                <%= msg %>
+            </div>
+        <% }); %>
+    <% } %>
+
+    <!-- Login Form -->
+    <form class="loginForm" action="/login" method="post">
+        <!-- Username Field -->
+        <div class="formGroup">
+            <label class="formLabel" for="username">Username:</label>
+            <input 
+                type="text" 
+                id="username" 
+                name="username" 
+                placeholder="Enter your username" 
+                required 
+                autocapitalize="none" 
+                spellcheck="false" 
+                style="text-transform: none;">
+        </div>
+
+        <!-- Password Field -->
+        <div class="formGroup">
+            <label class="formLabel" for="password">Password:</label>
+            <input 
+                type="password" 
+                id="password" 
+                name="password" 
+                placeholder="Enter your password" 
+                required>
+        </div>
+
+        <!-- Submit Button -->
+        <button class="submitUser btn btn-primary" type="submit">Login</button>
+    </form>
+
+    <!-- Footer Links -->
+    <div class="signupFooter">
+        <p>Not a member yet? <a class="backToSignup" href="/signup">Sign up here</a></p>
+    </div>
+
+    <a class="backToHome btn btn-secondary" href="/">Back to Home</a>
+</body>
+</html>

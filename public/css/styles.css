@@ -1,0 +1,303 @@
+/* General Styling for Home Page */
+body.home {
+    background-color: #f9f9f9;
+    font-family: 'Poppins', Arial, sans-serif;
+    color: #333;
+    padding: 20px;
+}
+
+header, footer {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.namuenetecLogo {
+    margin-bottom: -20px;
+    max-width: 140px;
+}
+
+.homeHeading {
+    font-size: 36px;
+    color: #1877f2;
+    margin-bottom: 10px;
+}
+
+.homeUserWelcome, 
+.homeWelcome {
+    font-size: 20px;
+    color: #555;
+    font-weight: 500;
+}
+
+/* Navigation Links */
+a {
+    text-decoration: none;
+    font-size: 14px;
+    color: #1877f2;
+    margin: 0 10px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.postAMessage,
+.logoutFromHome,
+.membersLogin,
+.membersSignup {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 10px 5px;
+}
+
+/* Messages List */
+.homeMessages {
+    list-style-type: none;
+    padding: 0;
+}
+
+.homeMessages li {
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.homeMessages li:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* User Messages */
+.userMessage {
+    background: linear-gradient(135deg, #8fd3f4 0%, #84fab0 100%);
+    color: #000;
+}
+
+/* Other User Messages */
+.otherMessage {
+    background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+    color: #000;
+}
+
+/* Message Content */
+.homeMessages li h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.homeMessages li p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.homeMessages li small {
+    font-size: 14px;
+    font-weight: 500;
+    color: #000;
+}
+
+/* Buttons for Edit and Delete */
+.editMessages,
+.deleteMessage {
+    background: #1877f2;
+    color:#FFF;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-right: 5px;
+    transition: background-color 0.2s;
+}
+
+.editMessages:hover {
+    background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+    color: #000;
+}
+
+.deleteMessage:hover {
+    background-color: #f52738;
+    color: #FFF;
+}
+
+/* Sign Up and login Page Styles */
+body.signup, body.login {
+    background-color: #f0f2f5;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.signupHeading, .loginHeading {
+    text-align: center;
+    color: #b03b09;
+    font-size: 2rem;
+    margin-top: 2rem;
+}
+
+.signupForm, .loginForm {
+    max-width: 400px;
+    margin: 2rem auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.signupForm label, .loginForm label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.signupForm input, .loginForm input {
+    width: 93%;
+    padding: 0.8rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.submitUser {
+    width: 100%;
+    padding: 0.8rem;
+    background: linear-gradient(90deg, #FF6F61, #FF8C42);
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+.submitUser:hover {
+    background-color: #145dbf;
+}
+
+.backToHome {
+    display: block;
+    text-align: center;
+    margin-top: 1rem;
+    text-decoration: none;
+    color: #b03b09;
+}
+
+.backToHome:hover {
+    text-decoration: underline;
+}
+
+.signupFooter, .loginFooter {
+    display: flex;
+    justify-content: center;
+} 
+.backToSignup, .backToLogin {
+    margin-left: 5px;
+    color: #1877f2;
+    text-decoration: none;
+}
+
+/* General Styles for Post and Edit Forms */
+.messageHeading {
+    text-align: center;
+    color: #b03b09;
+    font-size: 2rem;
+    margin-top: 2rem;
+}
+.postMessageForm,
+.editForm {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+.postMessageForm h1,
+.editForm h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.messageTitleLabel,
+.meessageLabel {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.messageTitle,
+.newMessage {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+}
+
+.messageTitle:focus,
+.newMessage:focus {
+    border-color: #1877f2;
+    outline: none;
+    box-shadow: 0 0 5px rgba(24, 119, 242, 0.5);
+}
+
+.newMessage {
+    height: 100px;
+    resize: none;
+}
+
+.submitMessage {
+    background: linear-gradient(90deg, #FF6F61, #FF8C42);
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.submitMessage:hover {
+    background: linear-gradient(90deg, #f54f40, #fa7f32);
+}
+
+.cancelMessage {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: #b03b09;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.cancelMessage:hover {
+    text-decoration: underline;
+}
+
+/* Body Styling for Individual Pages */
+body.postMessage,
+body.editMessage {
+    background-color: #f0f2f5;
+    font-family: Arial, sans-serif;
+}
+
+.postMessage h1,
+.editMessage h1 {
+    margin-bottom: 20px;
+}

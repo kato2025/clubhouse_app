@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Edit Message</title>
+</head>
+<body class="editMessage">
+    <h1 class="messageHeading">Edit Message</h1>
+    <form class="editForm" action="/messages/<%= message.id %>/edit" method="POST">
+        <div>
+            <label class="messageTitleLabel" for="title">Title</label>
+            <input class="messageTitle" type="text" id="title" name="title" value="<%= message.title %>" required>
+        </div>
+        <div>
+            <label class="meessageLabel" for="text">Message</label>
+            <textarea class="newMessage" id="text" name="text" required><%= message.text %></textarea>
+        </div>
+        <button class="submitMessage" type="submit">Update Message</button>
+        <a class="cancelMessage" href="/">Cancel</a>
+    </form>
+</body>
+</html>

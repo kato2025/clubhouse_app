@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Post a Message</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body class="postMessage">
+    <h1 class="messageHeading">Post a New Message</h1>
+    <form class="postMessageForm" action="/postMessage" method="POST">
+        <label class="messageTitleLabel" for="title">Title:</label>
+        <input class="messageTitle" type="text" name="title" required><br><br>
+
+        <label class="meessageLabel" for="text">Message:</label>
+        <textarea class="newMessage" name="text" required></textarea><br><br>
+
+        <button class="submitMessage" type="submit">Post Message</button>
+    </form>
+    <br>
+    <a class="backToHome" href="/">Back to Home</a>
+</body>
+</html>

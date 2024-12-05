@@ -103,6 +103,7 @@ app.post('/signup', async (req, res) => {
             req.flash('error', 'Username already taken, please choose another one.');
             return res.render('signup', { messages: { error: req.flash('error') } });
         }
+
         const hashedPassword = await bcrypt.hash(password, 10);
         await pool.query(
             'INSERT INTO users (username, password, is_member) VALUES ($1, $2, $3)',
@@ -112,10 +113,25 @@ app.post('/signup', async (req, res) => {
         res.redirect('/login');
     } catch (error) {
         console.error("Registration error:", error);
-        req.flash('error', 'An unexpected error occurred. Please try again.');
+
+        // Custom error handling for known issues
+        if (error.code === '23505') {
+            req.flash('error', 'Username already exists (database constraint violation).');
+        } else if (error.code === 'ECONNREFUSED') {
+            req.flash('error', 'Database connection failed. Please check the database server.');
+        } else if (error.message.includes('password')) {
+            req.flash('error', 'Password hashing failed. Please try again.');
+        } else {
+            req.flash('error', 'An unexpected error occurred. Please try again.');
+        }
+
+        // Log detailed error for debugging (only on the server)
+        console.error("Detailed error information:", error);
+
         res.render('signup', { messages: { error: req.flash('error') } });
     }
 });
+
 
 // Login route
 app.get('/login', (req, res) => {

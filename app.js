@@ -96,7 +96,7 @@ app.get('/signup', (req, res) => {
 });
 
 app.post('/signup', async (req, res) => {
-    const { username, password, is_member } = req.body;
+    const { username, password, name, is_member } = req.body; // Include the name field
     try {
         const result = await pool.query('SELECT * FROM users WHERE username = $1', [username]);
         if (result.rows.length > 0) {
@@ -106,32 +106,26 @@ app.post('/signup', async (req, res) => {
 
         const hashedPassword = await bcrypt.hash(password, 10);
         await pool.query(
-            'INSERT INTO users (username, password, is_member) VALUES ($1, $2, $3)',
-            [username, hashedPassword, is_member || false]
+            'INSERT INTO users (name, username, password, is_member) VALUES ($1, $2, $3, $4)',
+            [name, username, hashedPassword, is_member || false] // Pass name to the query
         );
         req.flash('success', 'Account created successfully. Please log in.');
         res.redirect('/login');
     } catch (error) {
         console.error("Registration error:", error);
 
-        // Custom error handling for known issues
-        if (error.code === '23505') {
-            req.flash('error', 'Username already exists (database constraint violation).');
-        } else if (error.code === 'ECONNREFUSED') {
-            req.flash('error', 'Database connection failed. Please check the database server.');
-        } else if (error.message.includes('password')) {
-            req.flash('error', 'Password hashing failed. Please try again.');
+        if (error.code === '23502') {
+            req.flash(
+                'error',
+                `Missing required field: ${error.column}. Please fill out all fields and try again.`
+            );
         } else {
             req.flash('error', 'An unexpected error occurred. Please try again.');
         }
 
-        // Log detailed error for debugging (only on the server)
-        console.error("Detailed error information:", error);
-
         res.render('signup', { messages: { error: req.flash('error') } });
     }
 });
-
 
 // Login route
 app.get('/login', (req, res) => {
@@ -164,22 +158,40 @@ app.get('/logout', (req, res) => {
     });
 });
 
-// Post a message route
-app.get('/postMessage', ensureAuthenticated, (req, res) => res.render('postMessage'));
+// Get route for posting a message
+app.get('/postMessage', ensureAuthenticated, (req, res) => {
+    res.render('postMessage'); // Render the form for posting a message
+});
 
+// Post route for submitting a message
 app.post('/postMessage', ensureAuthenticated, async (req, res) => {
     const { title, text } = req.body;
+
     try {
+        // Ensure user information is available
+        if (!req.user || !req.user.id) {
+            req.flash('error', 'User not authenticated.');
+            return res.redirect('/login');
+        }
+
+        // Insert the new message into the database
         await pool.query(
             'INSERT INTO messages (user_id, title, text, created_at) VALUES ($1, $2, $3, NOW())',
             [req.user.id, title, text]
         );
+
+        // Flash a success message
+        req.flash('success', 'Message posted successfully.');
         res.redirect('/');
     } catch (error) {
         console.error("Error posting message:", error);
-        res.status(500).send("Error saving message");
+
+        // Flash an error message and redirect back to the form
+        req.flash('error', 'Error posting your message. Please try again.');
+        res.redirect('/postMessage');
     }
 });
+
 
 // Edit message routes
 router.get('/editMessage/:id', ensureAuthenticated, async (req, res) => {

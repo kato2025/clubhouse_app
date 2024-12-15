@@ -158,40 +158,22 @@ app.get('/logout', (req, res) => {
     });
 });
 
-// Get route for posting a message
-app.get('/postMessage', ensureAuthenticated, (req, res) => {
-    res.render('postMessage'); // Render the form for posting a message
-});
+// Post a message route
+app.get('/postMessage', ensureAuthenticated, (req, res) => res.render('postMessage'));
 
-// Post route for submitting a message
 app.post('/postMessage', ensureAuthenticated, async (req, res) => {
     const { title, text } = req.body;
-
     try {
-        // Ensure user information is available
-        if (!req.user || !req.user.id) {
-            req.flash('error', 'User not authenticated.');
-            return res.redirect('/login');
-        }
-
-        // Insert the new message into the database
         await pool.query(
             'INSERT INTO messages (user_id, title, text, created_at) VALUES ($1, $2, $3, NOW())',
             [req.user.id, title, text]
         );
-
-        // Flash a success message
-        req.flash('success', 'Message posted successfully.');
         res.redirect('/');
     } catch (error) {
         console.error("Error posting message:", error);
-
-        // Flash an error message and redirect back to the form
-        req.flash('error', 'Error posting your message. Please try again.');
-        res.redirect('/postMessage');
+        res.status(500).send("Error saving message");
     }
 });
-
 
 // Edit message routes
 router.get('/editMessage/:id', ensureAuthenticated, async (req, res) => {

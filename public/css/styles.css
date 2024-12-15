@@ -13,7 +13,7 @@ header, footer {
 
 .namuenetecLogo {
     margin-bottom: -20px;
-    max-width: 140px;
+    max-width: 160px;
 }
 
 .homeHeading {
@@ -139,7 +139,7 @@ body.signup, body.login {
 }
 
 .signupForm, .loginForm {
-    max-width: 400px;
+    max-width: 800px;
     margin: 2rem auto;
     background: white;
     padding: 2rem;
@@ -150,6 +150,7 @@ body.signup, body.login {
 .signupForm label, .loginForm label {
     display: block;
     font-weight: bold;
+    font-size: 20px;
     margin-bottom: 0.5rem;
     color: #333;
 }
@@ -160,7 +161,7 @@ body.signup, body.login {
     margin-bottom: 1.5rem;
     border: 1px solid #ccc;
     border-radius: 6px;
-    font-size: 1rem;
+    font-size: 20px;
 }
 
 .submitUser {
@@ -212,12 +213,13 @@ body.signup, body.login {
 }
 .postMessageForm,
 .editForm {
-    max-width: 500px;
+    max-width: 800px;
     margin: 0 auto;
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-size: 20px;
     font-family: Arial, sans-serif;
 }
 
@@ -232,7 +234,7 @@ body.signup, body.login {
 .messageTitleLabel,
 .meessageLabel {
     display: block;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: bold;
     color: #555;
     margin-bottom: 8px;
@@ -244,7 +246,7 @@ body.signup, body.login {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 6px;
-    font-size: 14px;
+    font-size: 20px;
     margin-bottom: 16px;
     box-sizing: border-box;
 }

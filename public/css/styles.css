@@ -164,6 +164,10 @@ body.signup, body.login {
     font-size: 20px;
 }
 
+.formText {
+    font-size: 20px;
+}
+
 .submitUser {
     width: 100%;
     padding: 0.8rem;
